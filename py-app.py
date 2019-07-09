@@ -1,10 +1,10 @@
 from flask import Flask, jsonify, request
-from multiprocessing import Value
+# from multiprocessing import Value
 
 from pylibra import LibraWallet
 
 
-counter = Value('i', 0)
+# counter = Value('i', 0)
 app = Flask(__name__)
 
 a = []
@@ -19,18 +19,14 @@ API Usage:
 
 """
 
-def id_generator():
-    with counter.get_lock():
-        counter.value += 1
-        return counter.value
 
-@app.route('/libra/regenerate', methods=['GET'])
-def regenerate():
-    wallet1 = LibraWallet()
-    assert len(wallet1.to_mnemonic().split()) == 12
-    wallet2 = LibraWallet(strength=256)
-    assert len(wallet2.to_mnemonic().split()) == 24
-    return help_message
+# @app.route('/libra/regenerate', methods=['GET'])
+# def regenerate():
+#     wallet1 = LibraWallet()
+#     assert len(wallet1.to_mnemonic().split()) == 12
+#     wallet2 = LibraWallet(strength=256)
+#     assert len(wallet2.to_mnemonic().split()) == 24
+#     return help_message
 
 
 @app.route('/libra/regenerate', methods=['POST'])
@@ -42,7 +38,7 @@ def index():
     # Regenerate wallet from an existing Mnemonic
     wallet2 = LibraWallet("student deliver dentist cat gorilla sleep proud naive gown fiber awkward weasel")
     print(wallet2.to_mnemonic())
-    return "wallet1 : {} \n wallet2 : {}".format(wallet1, wallet2)
+    return "wallet1 : {} \n wallet2 : {}".format(wallet1.to_mnemonic(), wallet2.to_mnemonic())
 
 @app.route('/process', methods=['POST'])
 def process():

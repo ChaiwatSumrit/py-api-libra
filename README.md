@@ -1,13 +1,35 @@
 # py-api-libra
 py-api-libra
 
-# install lib
+# Requiry python3 & pip3
+http://ubuntuhandbook.org/index.php/2017/07/install-python-3-6-1-in-ubuntu-16-04-lts/
+```
+sudo apt install python3-pip
+
+sudo pip3 install pylibra
+```
+
+# Install Lib
 
 ```
-pip install flask flask-jsonpify flask-sqlalchemy flask-restful
+pip3 install flask flask-jsonpify flask-sqlalchemy flask-restful
 ```
 
-# start api
+## ERROR
+
+```
+ERROR: Could not install packages due to an EnvironmentError: [Errno 13] Permission denied: '/usr/local/lib/python3.6/dist-packages/werkzeug'
+Consider using the `--user` option or check the permissions.
+```
+
+```
+sudo pip3 install flask flask-jsonpify flask-sqlalchemy flask-restful
+#RO
+pip3 install flask flask-jsonpify flask-sqlalchemy flask-restful --user
+```
+
+
+# Start API
 
 ```
 cd py-api-libra
