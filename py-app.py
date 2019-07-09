@@ -127,4 +127,4 @@ def inquiryBalance():
 if __name__ == '__main__':
     # app = connexion.App(__name__, specification_dir='swagger/')
     # app.add_api('sample.yaml')
-    app.run(debug=True,port=8080)
+    app.run(host='3.16.23.43',debug=True,port=8080)

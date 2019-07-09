@@ -1,8 +1,9 @@
-FROM python:3.6-alpine
+# FROM python:3.6-alpine
+FROM python:3.6-slim
 
-RUN pip3 install pylibra flask flask-jsonpify flask-sqlalchemy flask-restful
+COPY requirements.txt /app
+COPY py-app.py /app
+RUN pip install -r requirements.txt
 
-ADD . /opt/api/
-WORKDIR /opt/api
 EXPOSE 8080
 CMD ["python", "py-app.py"]
