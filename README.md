@@ -1,6 +1,13 @@
 # py-api-libra
 py-api-libra
 
+## Function 
+- registerAccount
+- mintMonnyAccount
+- transfer
+- inquiryBalance
+- comming zoon***inquiryTransaction***
+
 # Requiry python3 & pip3
 http://ubuntuhandbook.org/index.php/2017/07/install-python-3-6-1-in-ubuntu-16-04-lts/
 ```
@@ -36,3 +43,6 @@ cd py-api-libra
 
 python py-app.py 
 ```
+# Test by PostMan
+
+import ***py-api-libra.postman_collection.json*** to Postman

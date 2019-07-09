@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "ea581974-41e8-4aed-be5b-14d15147a7f5",
+		"name": "py-api-libra",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "registerAccount",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"monny\": 20000\n}"
+				},
+				"url": {
+					"raw": "/libra/registerAccount",
+					"path": [
+						"libra",
+						"registerAccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "inquiryBalance",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"authentication_key\": \"9b976a80925eeb39a8ad2c36544413353c7f7cb3ca697836db3c2ba6c849c83a\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/libra/inquiryBalance",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"libra",
+						"inquiryBalance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transfer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"sender\" : \"time high print loop dragon shiver setup brush team hope east agent\",\n\t\"receiver\" : \"15c84bd42adb6fec153c83c5f8d7bbe58dabe20dbb595f8855c08f7ff74529f6\",\n\t\"monny\" : 100\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/libra/transfer",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"libra",
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mintMonnyAccount",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"mnemonic\" : \"afford like alone athlete ethics teach observe goat raw what employ engine\",\n\t\"monny\" : 500\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/libra/mintMonnyAccount",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"libra",
+						"mintMonnyAccount"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
