@@ -18,7 +18,7 @@ def createWallet():
         # amount = data['amount']
 
         account = wallet.get_account(0)
-        client.mint_with_faucet(account, 1000)
+        client.mint_with_faucet(account, 1000000000000)
         account_state = client.get_account_state(account)
 
         result = {
