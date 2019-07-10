@@ -18,7 +18,7 @@ def createWallet():
         # amount = data['amount']
 
         account = wallet.get_account(0)
-        client.mint_with_faucet(account, 1000000000000)
+        client.mint_with_faucet(account, 1000000000000) #1 000 000 000 000 lan lan
         account_state = client.get_account_state(account)
 
         result = {
@@ -40,28 +40,28 @@ def mint():
         print(functionName)
         
         data = request.get_json()
-        mnemonic = data['mnemonic']
+        # mnemonic = data['mnemonic']
         address = data['address']
         amount = data['amount']
 
         client = LibraClient()
 
-        wallet = LibraWallet(mnemonic)
-        account = wallet.get_account(0)
-        account_state = client.get_account_state(address)
-        if account_state.authentication_key != address :
-                return {
-                        "massage" : "inquiryBalance fail mnemonic no relational with address",
-                        "mnemonic" : mnemonic,
-                        "address" : address
-                },400
+        # wallet = LibraWallet(mnemonic)
+        # account = wallet.get_account(0)
+        # account_state = client.get_account_state(address)
+        # if account_state.authentication_key != address :
+        #         return {
+        #                 "massage" : "inquiryBalance fail mnemonic no relational with address",
+        #                 "mnemonic" : mnemonic,
+        #                 "address" : address
+        #         },400
 
-        client.mint_with_faucet(account, amount)
+        client.mint_with_faucet(address, amount)
         account_state = client.get_account_state(address)
 
 
         result = {
-                "mnemonic":mnemonic,
+                # "mnemonic":mnemonic,
                 "address":account_state.authentication_key,
                 "balance":account_state.balance,
                 "sequenceNumber":account_state.sequence_number,
@@ -129,30 +129,30 @@ def getBalance():
         client = LibraClient()
         data = request.get_json()
 
-        mnemonic = data["mnemonic"]
+        # mnemonic = data["mnemonic"]
         address = data['address']
-
-        wallet = LibraWallet(mnemonic)
+        # wallet.to_mnemonic(),
+        # wallet = LibraWallet(mnemonic)
         # try :
         #         wallet = LibraWallet(mnemonic)
         # except TypeError as error :
         #         print("Error : {}".format(error))
         #         return { "error" : error },400
 
-        account = wallet.get_account(0)
-        account_state_by_mnemonic = client.get_account_state(account)
+        # account = wallet.get_account(0)
+        # account_state_by_mnemonic = client.get_account_state(account)
 
-        if account_state_by_mnemonic.authentication_key != address :
-                  return {
-                        "massage" : "inquiryBalance fail mnemonic no relational with address",
-                        "mnemonic" : mnemonic,
-                        "address" : address
-                },400
+        # if account_state_by_mnemonic.authentication_key != address :
+        #           return {
+        #                 "massage" : "inquiryBalance fail mnemonic no relational with address",
+        #                 "mnemonic" : mnemonic,
+        #                 "address" : address
+        #         },400
 
         account_state = client.get_account_state(address)
 
         result = {
-                "mnemonic":mnemonic,
+                # "mnemonic":mnemonic,
                 "address":address,
                 "balance":account_state.balance,
                 "sequence_number":account_state.sequence_number,

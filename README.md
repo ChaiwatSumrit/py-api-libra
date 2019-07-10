@@ -9,12 +9,9 @@ py-api-libra
 - comming zoon***inquiryTransaction***
 
 # Requiry python3 & pip3
-http://ubuntuhandbook.org/index.php/2017/07/install-python-3-6-1-in-ubuntu-16-04-lts/
-```
-sudo apt install python3-pip
+https://vitux.com/install-python3-on-ubuntu-and-set-up-a-virtual-programming-environment/
+https://linuxize.com/post/how-to-install-pip-on-ubuntu-18.04/
 
-sudo pip3 install pylibra
-```
 
 # Install Lib
 
@@ -41,7 +38,7 @@ pip3 install flask flask-jsonpify flask-sqlalchemy flask-restful --user
 ```
 cd py-api-libra
 
-python py-app.py 
+python3 py-app.py 
 ```
 # Test by PostMan
 
