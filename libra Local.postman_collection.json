@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "80196bdd-4192-40a0-bebb-177204b34408",
+		"name": "libra Local",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createWallet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:3000/createWallet",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3000",
+					"path": [
+						"createWallet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getBalance",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"address\": \"6daba36699682923fe25550cee73e07a67a30488ffd0e8885915e2556acacfd1\",\n\t\"nmonic\" : \"civil divert salt essence ramp army seminar tooth beach plate you soul\"\n}"
+				},
+				"url": {
+					"raw": "http://0.0.0.0:3000/getBalance",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3000",
+					"path": [
+						"getBalance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mint",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"address\": \"f8765199741ca3e80736ecc4397218c92d27a5cbf75c9fae0317592f1745554e\",\n\t\"amount\": 100\n}"
+				},
+				"url": {
+					"raw": "http://0.0.0.0:3000/mint",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3000",
+					"path": [
+						"mint"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transfer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fromAddress\": \"c244218af194c61f2e06ce3effdbcc57b611a4067c381b36f421d8b88ff0c845\",\n\t\"mnemonic\": \"across door crisp tiger special manual prepare brand stereo music relief melt shuffle concert opinion burger garden front cancel athlete another rookie item thank;1\",\n\t\"toAddress\": \"c6eb3767cf2985656abb6762469f841b86ab5add9a7e30a56f9b4808025b4c58\",\n\t\"amount\": \"10\"\n}\t"
+				},
+				"url": {
+					"raw": "http://0.0.0.0:3000/transfer",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "3000",
+					"path": [
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
