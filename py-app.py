@@ -1,26 +1,36 @@
+
+#!/usr/bin/env python3
+# countasync.py
+
 from flask import Flask, jsonify, request
 
 from pylibra import LibraWallet
 from pylibra import LibraClient
 from pylibra.transaction import TransferTransaction
 
+# import sys
+import asyncio
+# import aiohttp
+
 app = Flask(__name__)
 
-
+@asyncio.coroutine
 @app.route('/createWallet', methods=['POST'])
-async def createWallet():
+def createWallet():
         functionName = "[createWallet]"
         print(functionName)
-        client = await LibraClient() # Default client connecting to the official testnet
-        wallet = await LibraWallet()
-
+        client =  LibraClient() # Default client connecting to the official testnet
+        wallet =  LibraWallet()
         # data = request.get_json()
         # amount = data['amount']
 
-        account = await wallet.get_account(0)
-        await client.mint_with_faucet(account, 1000000000000) #1 000 000 000 000 lan lan
+        # yield from asyncio.sleep(5)
+        account =  wallet.get_account(0)
+        print(account)
+        client.mint_with_faucet(account, 1000000000000) #1 000 000 000 000 lan lan
         account_state = "555"
-        account_state = await client.get_account_state(account)
+        print(account)
+        account_state = client.get_account_state(account)
         print("account_state : {}".format(account_state))
         print("PK : {}".format(account_state.authentication_key))
 
