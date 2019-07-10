@@ -8,21 +8,21 @@ app = Flask(__name__)
 
 
 @app.route('/createWallet', methods=['POST'])
-def createWallet():
+async def createWallet():
         functionName = "[createWallet]"
         print(functionName)
-        client = LibraClient() # Default client connecting to the official testnet
-        wallet = LibraWallet()
+        client = await LibraClient() # Default client connecting to the official testnet
+        wallet = await LibraWallet()
 
         # data = request.get_json()
         # amount = data['amount']
 
-        account = wallet.get_account(0)
-        client.mint_with_faucet(account, 1000000000000) #1 000 000 000 000 lan lan
+        account = await wallet.get_account(0)
+        await client.mint_with_faucet(account, 1000000000000) #1 000 000 000 000 lan lan
         account_state = "555"
-        account_state = client.get_account_state(account)
-        print("PK : {}".format(account_state.authentication_key))
+        account_state = await client.get_account_state(account)
         print("account_state : {}".format(account_state))
+        print("PK : {}".format(account_state.authentication_key))
 
         result = {
                 "mnemonic":wallet.to_mnemonic(),
