@@ -20,6 +20,7 @@ def createWallet():
         account = wallet.get_account(0)
         client.mint_with_faucet(account, 1000000000000) #1 000 000 000 000 lan lan
         account_state = client.get_account_state(account)
+        print("PK : {}".format(account_state.authentication_key))
 
         result = {
                 "mnemonic":wallet.to_mnemonic(),
