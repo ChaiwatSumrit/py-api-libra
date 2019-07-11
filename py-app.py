@@ -15,6 +15,8 @@ import asyncio
 
 app = Flask(__name__)
 
+
+config_coin = 1000000 #1E micro libra == 1 libra coin
 @asyncio.coroutine
 @app.route('/createWallet', methods=['POST'])
 def createWallet():
@@ -34,7 +36,7 @@ def createWallet():
         wallet =  LibraWallet(wallet.to_mnemonic())
         account =  wallet.get_account(0)
 
-        print(client.mint_with_faucet(account, 1000000)) #1 000 000 lan lan
+        print(client.mint_with_faucet(account, 1000000*config_coin)) #1 000 000 lan lan
         account_state = "BBBBBB"
 
         time.sleep(0.5)
@@ -45,7 +47,7 @@ def createWallet():
         result = {
                 "mnemonic":wallet.to_mnemonic(),
                 "address":account_state.authentication_key,
-                "balance":account_state.balance,
+                "balance":account_state.balance/config_coin,
                 "sequenceNumber":account_state.sequence_number,
                 "receivedEventsCount":account_state.received_events_count,
                 "sentEventsCount":account_state.sent_events_count
@@ -77,14 +79,14 @@ def mint():
         #                 "address" : address
         #         },400
 
-        client.mint_with_faucet(address, amount)
+        client.mint_with_faucet(address, amount*config_coin)
         account_state = client.get_account_state(address)
 
 
         result = {
                 # "mnemonic":mnemonic,
                 "address":account_state.authentication_key,
-                "balance":account_state.balance,
+                "balance":account_state.balance/config_coin,
                 "sequenceNumber":account_state.sequence_number,
                 "receivedEventsCount":account_state.received_events_count,
                 "sentEventsCount":account_state.sent_events_count
@@ -103,7 +105,7 @@ def transfer():
         data = request.get_json()
         sender = data['mnemonic'] #sender : mnemonic == SK
         receiver = data['toAddress'] #receiver hash<hex> : PK
-        amount = int(data['amount'])
+        amount = int(data['amount'])*config_coin
 
         if amount <= 0  :
                 return { 
@@ -135,7 +137,7 @@ def transfer():
                 "massage" : "Transfer success",
                 "sender" : sender_account_state.authentication_key,
                 "receiver" : receiver,
-                "amount" : amount
+                "amount" : amount/config_coin
         }
 
         print("result : {}".format(result))
@@ -175,7 +177,7 @@ def getBalance():
         result = {
                 "mnemonic":mnemonic,
                 "address":address,
-                "balance":account_state.balance,
+                "balance":account_state.balance/config_coin,
                 "sequence_number":account_state.sequence_number,
                 "received_events_count":account_state.received_events_count,
                 "sent_events_count":account_state.sent_events_count
@@ -210,7 +212,7 @@ def getBalanceByMnemonic():
         result = {
                 "mnemonic":mnemonic,
                 "address":account_state_by_mnemonic.authentication_key,
-                "balance":account_state_by_mnemonic.balance,
+                "balance":account_state_by_mnemonic.balance/config_coin,
                 "sequence_number":account_state_by_mnemonic.sequence_number,
                 "received_events_count":account_state_by_mnemonic.received_events_count,
                 "sent_events_count":account_state_by_mnemonic.sent_events_count
