@@ -1,9 +1,9 @@
 # FROM python:3.6-alpine
 FROM python:3.6-slim
 
-COPY requirements.txt /app
-COPY py-app.py /app
-RUN pip install -r requirements.txt
+COPY . /usr/src/app
 
-EXPOSE 8080
-CMD ["python", "py-app.py"]
+RUN pip3 install pylibra flask flask-jsonpify flask-sqlalchemy flask-restful
+WORKDIR /usr/src/app
+EXPOSE 3000
+CMD ["python3", "py-app.py"]
