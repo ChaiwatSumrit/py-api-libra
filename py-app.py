@@ -9,6 +9,7 @@ from pylibra import LibraClient
 from pylibra.transaction import TransferTransaction
 
 # import sys
+import time
 import asyncio
 # import aiohttp
 
@@ -35,6 +36,8 @@ def createWallet():
 
         client.mint_with_faucet(account, 100) #1 000 000 000 000 lan lan
         account_state = "BBBBBB"
+
+        time.sleep(2)
         account_state = client.get_account_state(account)
         print("account_state : {}".format(account_state))
         print("PK : {}".format(account_state.authentication_key))
