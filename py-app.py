@@ -26,7 +26,7 @@ def createWallet():
 
         # yield from asyncio.sleep(5)
         account = "AAAAA"
-        account =  wallet.get_account(1)
+        account =  wallet.get_account(0)
         print("to_mnemonic : {}".format(wallet.to_mnemonic()))
         print("to_mnemonic : {}".format(wallet.to_mnemonic()))
 
@@ -179,6 +179,42 @@ def getBalance():
 
         print("result : {}".format(result))
         return result,200
+
+
+@app.route('/getBalanceByMnemonic', methods=['POST'])
+def getBalanceByMnemonic():
+
+        functionName = "[getBalanceByMnemonic]"
+        print(functionName)
+     
+        client = LibraClient()
+        data = request.get_json()
+
+        mnemonic = data["mnemonic"]
+        # wallet.to_mnemonic(),
+        wallet = LibraWallet(mnemonic)
+        # try :
+        # wallet = LibraWallet(mnemonic)
+        # except TypeError as error :
+        #         print("Error : {}".format(error))
+        #         return { "error" : error },400
+
+        account = wallet.get_account(0)
+        account_state_by_mnemonic = client.get_account_state(account)
+        print(account_state_by_mnemonic)
+
+        result = {
+                "mnemonic":mnemonic,
+                "address":account_state_by_mnemonic.authentication_key,
+                "balance":account_state_by_mnemonic.balance,
+                "sequence_number":account_state_by_mnemonic.sequence_number,
+                "received_events_count":account_state_by_mnemonic.received_events_count,
+                "sent_events_count":account_state_by_mnemonic.sent_events_count
+        }
+
+        print("result : {}".format(result))
+        return result,200
+
 
 
 if __name__ == '__main__':
