@@ -34,7 +34,7 @@ def createWallet():
         wallet =  LibraWallet(wallet.to_mnemonic())
         account =  wallet.get_account(0)
 
-        client.mint_with_faucet(account, 1000000000000) #1 000 000 000 000 lan lan
+        print(client.mint_with_faucet(account, 1000000)) #1 000 000 lan lan
         account_state = "BBBBBB"
 
         time.sleep(0.5)
@@ -103,7 +103,7 @@ def transfer():
         data = request.get_json()
         sender = data['mnemonic'] #sender : mnemonic == SK
         receiver = data['toAddress'] #receiver hash<hex> : PK
-        amount = data['amount'] 
+        amount = int(data['amount'])
 
         if amount <= 0  :
                 return { 
