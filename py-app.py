@@ -34,10 +34,10 @@ def createWallet():
         wallet =  LibraWallet(wallet.to_mnemonic())
         account =  wallet.get_account(0)
 
-        client.mint_with_faucet(account, 100) #1 000 000 000 000 lan lan
+        client.mint_with_faucet(account, 1000000000000) #1 000 000 000 000 lan lan
         account_state = "BBBBBB"
 
-        time.sleep(2)
+        time.sleep(0.5)
         account_state = client.get_account_state(account)
         print("account_state : {}".format(account_state))
         print("PK : {}".format(account_state.authentication_key))
