@@ -26,12 +26,13 @@ def createWallet():
 
         # yield from asyncio.sleep(5)
         account = "AAAAA"
-        account =  wallet.get_account(0)
         print("to_mnemonic : {}".format(wallet.to_mnemonic()))
         print("to_mnemonic : {}".format(wallet.to_mnemonic()))
 
         print("account: {}".format(account))
         wallet =  LibraWallet(wallet.to_mnemonic())
+        account =  wallet.get_account(0)
+
         client.mint_with_faucet(account, 100) #1 000 000 000 000 lan lan
         account_state = "BBBBBB"
         account_state = client.get_account_state(account)
