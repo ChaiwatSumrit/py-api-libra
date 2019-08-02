@@ -28,7 +28,7 @@ Consider using the `--user` option or check the permissions.
 
 ```
 sudo pip3 install flask flask-jsonpify flask-sqlalchemy flask-restful
-#RO
+#OR
 pip3 install flask flask-jsonpify flask-sqlalchemy flask-restful --user
 ```
 
