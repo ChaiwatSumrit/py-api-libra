@@ -36,7 +36,7 @@ def createWallet():
         wallet =  LibraWallet(wallet.to_mnemonic())
         account =  wallet.get_account(0)
 
-        print(client.mint_with_faucet(account, 1000000*config_coin)) #1 000 000 lan lan
+        print(client.mint_with_faucet(account, 1000*config_coin)) #1 000 000 lan lan
         account_state = "BBBBBB"
 
         time.sleep(0.5)
